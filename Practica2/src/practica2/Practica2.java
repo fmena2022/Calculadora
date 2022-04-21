@@ -58,8 +58,8 @@ public class Practica2 {
             do {
                 comprobar = true;
                 calcul(n1, n2, operacion, res, numero2, nume2);
-}
-while (comprobar != true);
+            }
+            while (comprobar != true);
 
             System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
             System.out.println("\nVols continuar operant? \n");
