@@ -16,8 +16,8 @@ public class Practica2 {
     /**
      * @param args the command line arguments
      */
+        static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         double res = 0;
         String operacion;
         boolean comprobar = false;
@@ -57,46 +57,9 @@ public class Practica2 {
 
             do {
                 comprobar = true;
-                switch (operacion) {
-                    case "+":
-                        res = n1 + n2;
-                        break;
-                    case "-":
-                        res = n1 - n2;
-                        break;
-                    case "x":
-                    case "X":
-                        res = n1 * n2;
-                        break;
-                    case "/":
-                        while (n2 == 0) {
-                            do {
-                                System.err.println("Al denominador hi ha un zero \n"
-                                        + "per a  evitar errors coloca un altre valor.");
-                                numero2 = sc.nextLine();
-                            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-                            nume2 = Double.parseDouble(numero2);
-                            n2 = new Double(numero2);
-                        }
-                        res = n1 / n2;
-                        break;
-                    case "*":
-                        res = Math.pow(n1, n2);
-                        break;
-                    case "%":
-                        while (n2 == 0) {
-                            do {
-                                System.err.println("Al denominador hi ha un zero \n"
-                                        + "per a  evitar errors coloca un altre valor.");
-                                numero2 = sc.nextLine();
-                            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-                            nume2 = Double.parseDouble(numero2);
-                            n2 = new Double(numero2);
-                        }
-                        res = n1 % n2;
-                        break;
-                }
-            } while (comprobar != true);
+                calcul(n1, n2, operacion, res, numero2, nume2);
+}
+while (comprobar != true);
 
             System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
             System.out.println("\nVols continuar operant? \n");
@@ -118,4 +81,47 @@ public class Practica2 {
             } while (comprobar != true);
         } while (operacion.equals("s") || operacion.equals("S"));
     }
+    public static double calcul(double n1, double n2, String operacion, double res, String numero2, double nume2) {
+        switch (operacion) {
+            case "+":
+                res = n1 + n2;
+                break;
+            case "-":
+                res = n1 - n2;
+                break;
+            case "x":
+            case "X":
+                res = n1 * n2;
+                break;
+            case "/":
+                while (n2 == 0) {
+                    do {
+                        System.err.println("Al denominador hi ha un zero \n"
+                                + "per a  evitar errors coloca un altre valor.");
+                        numero2 = sc.nextLine();
+                    } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
+                    nume2 = Double.parseDouble(numero2);
+                    n2 = new Double(numero2);
+                }
+                res = n1 / n2;
+                break;
+            case "*":
+                res = Math.pow(n1, n2);
+                break;
+            case "%":
+                while (n2 == 0) {
+                    do {
+                        System.err.println("Al denominador hi ha un zero \n"
+                                + "per a  evitar errors coloca un altre valor.");
+                        numero2 = sc.nextLine();
+                    } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
+                    nume2 = Double.parseDouble(numero2);
+                    n2 = new Double(numero2);
+                }
+                res = n1 % n2;
+                break;
+        }
+        return res;
+    }
 }
+
