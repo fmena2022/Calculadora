@@ -57,7 +57,7 @@ public class Practica2 {
 
             do {
                 comprobar = true;
-                calcul(n1, n2, operacion, res, numero2, nume2);
+                res = calcul(n1, n2, operacion, res, numero2, nume2);
             }
             while (comprobar != true);
 
